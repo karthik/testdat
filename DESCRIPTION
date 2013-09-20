@@ -1,0 +1,14 @@
+Package: testdat
+Title: A suite for running automated tests on tabular data in R
+Description: 
+Version: 0.1
+Authors@R: c(person("Karthik", "Ram", role = c("aut", "cre"), email =
+    "karthik.ram@gmail.com"), person("David", "Tarrant", role="aut"))
+Depends:
+    R (>= 3.0.1)
+License: CC0
+LazyData: true
+Suggests:
+    testthat
+Collate:
+    'test_utf8.R'
