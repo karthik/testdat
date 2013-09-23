@@ -8,7 +8,7 @@ This package provides a test suite to ensure that tabular data are correctly for
 ```coffee
 library(devtools)
 # if you don't have the package, run install.packages("devtools")
-install_github("testdat", "karthikram")
+install_github("testdat", "ropensci")
 ```
 
 ## demos (not ready)
