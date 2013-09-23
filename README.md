@@ -11,7 +11,7 @@ library(devtools)
 install_github("testdat", "karthikram")
 ```
 
-## demos 
+## demos (not ready)
 There are several examples in the `demo` folder with error filled datasets. You can set up unit tests for those data and also for standard datasets (see `data()` for datasets available to you) that are part of installed packages.
 
 
