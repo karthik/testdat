@@ -1,0 +1,20 @@
+\name{remove_white_spaces}
+\alias{remove_white_spaces}
+\title{remove_white_spaces}
+\usage{
+remove_white_spaces(text)
+}
+\arguments{
+  \item{text}{Input text. Usually this would be a
+  \code{character} field.}
+}
+\description{
+Removes white spaces that could end up padding text
+}
+\examples{
+\dontrun{
+remove_white_spaces(" Karthik Ram")
+remove_white_spaces(" Karthik Ram ")
+}
+}
+
