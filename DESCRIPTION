@@ -12,6 +12,7 @@ Imports:
     assertthat,
     dplyr,
     whisker,
-    xtable
+    xtable,
+    outliers
 Suggests:
     testthat
