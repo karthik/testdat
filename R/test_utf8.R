@@ -20,8 +20,10 @@ test_utf8 <- function(dat) {
     if(any(ut8) == TRUE) {
         message("UTF-8 characters detected in columns ")
         message(sprintf("%s", paste0(as.character(which(ut8)), collapse = " ")))
+    } else {
+        NULL
     }
-    
+
 
 } 
 
