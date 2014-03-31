@@ -13,11 +13,10 @@ License: CC0
 LazyData: true
 Imports:
     assertthat,
-    dplyr,
     whisker,
     lubridate,
     stringr,
-    xtable,
     outliers
 Suggests:
-    testthat
+    testthat,
+    xtable
