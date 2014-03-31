@@ -20,11 +20,19 @@ detect_outliers <- function(dat, threshold = 1.5, ...){
 
     # put into results list
     res[[i]] <- tmp
-  
+    
+    if(length(tmp)==0){
+      message(paste("no outliers for variable \""),names(ind[i]),"\"")
+    }
+    else{
+      message(paste(length(tmp),"outlier(s) for variable \""),names(ind[i]),"\"")
+    }
   }
   
+  message("Below are indexes of outliers to investigate")
+  
   # return results list
-  res
+  return(res)
   
 }
 
