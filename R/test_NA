@@ -23,6 +23,7 @@ test_NA <- function(dat) {
       data.frame(row = nas, col = i, value = dat[nas, i])
     )
   }
+  out
 } 
 
 
