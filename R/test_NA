@@ -11,32 +11,27 @@ test_NA <- function(dat) {
   }
   message(sprintf("Now checking %s columns...", ncol(dat)))
   
+  # List is incomplete
+  NA_aliases = list(
+    "missing", 
+    "no data", 
+    "-999",
+    "999",
+    -999,
+    999,
+    NULL,
+    "na",
+    "N/A",
+    "NULL"
+  )
   
-  # Growing data.frames is slow.  Could optimize this later if needed for larger
-  # data sets.
-  out = data.frame(row = integer(0), col = integer(0), value = character(0))
+  # Should also do regexes to include other capitalizations
+  matches = is.na(dat) | sapply(dat, function(x){x %in% NA_aliases})
   
-  for(i in 1:ncol(dat)){
-    nas = which(is.na(dat[ , i]) | matches.na(dat[, i]))
-    out = rbind(
-      out, 
-      data.frame(row = nas, col = i, value = dat[nas, i])
-    )
-  }
-  out
+  data.frame(
+    row = row(dat)[matches], 
+    column = col(dat)[matches], 
+    value = dat[matches],
+    stringsAsFactors = FALSE
+  )
 } 
-
-
-# Should do some regexes for capitalization etc.
-matches.na = function(x){x %in% list(
-  "missing", 
-  "no data", 
-  "-999",
-  "999",
-  -999,
-  999,
-  NULL,
-  "na",
-  "N/A",
-  "NULL"
-)}
