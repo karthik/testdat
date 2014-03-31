@@ -7,6 +7,8 @@ test_utf8(dat, verbose = F)
 }
 \arguments{
 \item{dat}{input dataset. Currently only supports \code{data.frame} but will soon support \code{data.table}}
+
+\item{verbose}{Default is \code{FALSE}. Set to \code{TRUE} for detailed information.}
 }
 \description{
 This test will check every column in a data.frame for possible unicode characters.
