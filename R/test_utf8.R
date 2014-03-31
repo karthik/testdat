@@ -38,6 +38,6 @@ non_ascii <- function(x) {
 
 # Test
 # Set the working directory to the package root
- data <- read.csv("local/km1314-waypoints.csv")
- test_utf8(data)
-
+#  data <- read.csv("local/km1314-waypoints.csv")
+#  test_utf8(data)
+# 

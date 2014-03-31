@@ -1,7 +1,11 @@
-### outlier detection functions -------------------------
-
-# functions to import: scores from outliers package
-# returns an index with outliers to investigate
+#' Functions to import: scores from outliers package
+#' 
+#' @import outliers
+#' @export 
+#' @param dat data.frame input
+#' @param threshold Threshold value
+#' @param ... Further args
+#' @return Returns an index with outliers to investigate
 
 detect_outliers <- function(dat, threshold = 1.5, ...){
   
