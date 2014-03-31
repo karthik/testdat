@@ -1,0 +1,26 @@
+\name{browse_dat}
+\alias{browse_dat}
+\title{Browse dataset in your default browser.}
+\usage{
+browse_dat(input = NULL, output = NULL, browse = TRUE)
+}
+\arguments{
+  \item{input}{Input}
+
+  \item{output}{Path and file name for output file. If
+  NULL, a temporary file is used.}
+
+  \item{browse}{Browse file in your default browse
+  immediately after file creation.  If FALSE, the file is
+  written, but not opened.}
+}
+\description{
+Browse dataset in your default browser.
+}
+\examples{
+\dontrun{
+browse_dat(input=mtcars)
+browse_dat(iris)
+}
+}
+
