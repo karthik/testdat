@@ -4,6 +4,7 @@
 #' @param index index of column containing dates
 #' @param form a lubridate function giving the format the dates should be in
 #' @value returns FALSE if parsing using the function specified in \code{form} fails. If parsing succeeds, the minimum and maximum years in the date column are printed, so that mis-formatted dates (that still pass parse tests) can be detected.
+#' @export
 test_datecol = function(dat, index, form=ymd){
     require(lubridate)
     formatted_dates = suppressWarnings(form(dat[,index]))
