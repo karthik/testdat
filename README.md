@@ -8,11 +8,8 @@ This package provides a test suite to ensure that tabular data are correctly for
 ```coffee
 library(devtools)
 # if you don't have the package, run install.packages("devtools")
-install_github("testdat", "ropensci")
+install_github("ropensci/testdat")
 ```
-
-## demos (not ready)
-There are several examples in the `demo` folder with error filled datasets. You can set up unit tests for those data and also for standard datasets (see `data()` for datasets available to you) that are part of installed packages.
 
 
 
