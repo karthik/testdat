@@ -2,7 +2,7 @@
 \alias{test_utf8}
 \title{Test for UTF-8 characters}
 \usage{
-test_utf8(dat)
+test_utf8(dat, verbose = F)
 }
 \arguments{
   \item{dat}{input dataset. Currently only supports

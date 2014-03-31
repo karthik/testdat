@@ -1,5 +1,6 @@
 Package: testdat
-Title: A suite for running automated tests to detect common problems with tabular data
+Title: A suite for running automated tests to detect common problems with
+    tabular data
 Description: 
 Version: 0.2
 Authors@R: c(person("Karthik", "Ram", role = c("aut", "cre"), email =
