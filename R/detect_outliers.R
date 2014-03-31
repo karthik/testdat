@@ -1,13 +1,16 @@
-#' Functions to import: scores from outliers package
-#' 
-#' @import outliers
-#' @export 
-#' @param dat data.frame input
-#' @param threshold Threshold value
-#' @param ... Further args
-#' @return Returns an index with outliers to investigate
-
-detect_outliers <- function(dat, threshold = 1.5, ...){
+#' Test for outliers
+#'
+#' This function identifies numeric columns in a data.frame, then identifies outliers and returns the indexes of these possible outliers for each numeric column.
+#' @param dat input dataset. Currently only supports \code{data.frame} but will soon support \code{data.table}
+#' @param threshold for outlier detection method (defaults to z-score)
+#' @param ... Further args (to be passed to scores() function)
+#' @export
+#' @importFrom outliers scores
+#' @examples \dontrun{
+#' data(iris)
+#' detect_outliers(iris)
+#'}
+detect_outliers <- function(dat, threshold = 1.96, ...){
   
   # identify numeric columns
   ind <- which(sapply(dat, is.numeric))
@@ -21,7 +24,7 @@ detect_outliers <- function(dat, threshold = 1.5, ...){
     
     # identify outliers
     tmp <- which(scores(dat[,ind[i]]) >= threshold, ...)
-
+    
     # put into results list
     res[[i]] <- tmp
     
@@ -39,5 +42,4 @@ detect_outliers <- function(dat, threshold = 1.5, ...){
   return(res)
   
 }
-
 
