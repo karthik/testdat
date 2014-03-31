@@ -16,10 +16,23 @@ test_utf8 <- function(dat) {
     }
     message(sprintf("Now checking %s columns...", ncol(dat)))
     # Testing for UTF-8 in any columns
-    ut8 <- apply(dat, 2, Encoding)
-    if (any(ut8 == "UTF-8")) {
-        pos <- str_c(as.character(which(ut8 == "UTF-8")), collapse = " ")
-        message(sprintf("UTF-8 characters detected in columns %s", pos))
+    ut8 <- suppressWarnings(apply(dat, 2, non_ascii))
+    if(any(ut8) == TRUE) {
+        message("UTF-8 characters detected in columns ")
+        message(sprintf("%s", paste0(as.character(which(ut8)), collapse = " ")))
     }
-    message("done")
+
 } 
+
+
+#'@noRd
+non_ascii <- function(x) {
+  any(charToRaw(x) > 0x7F)
+}
+
+
+# Test
+# Set the working directory to the package root
+ data <- read.csv("local/km1314-waypoints.csv")
+ test_utf8(data)
+
