@@ -6,6 +6,16 @@
 #' @param custom_NAs addition NA aliases you want to fix. Be sure to create a list if you want to include NA aliases of different classes.
 #' @param removeFactors Should columns be converted from factors after fixing for NA aliases? (Conversion to factors happens by default in correction process.) Strongly recomment the TRUE default.
 #' @export
+#' @examples \dontrun{
+#' data(iris)
+#' dat <- data.frame(
+#' date = rep(as.Date("2014-01-01"),10),
+#' num = c(rep(1,8),999,"n/a"),
+#' name = c("NULL","naa",rep("foo",8))
+#' )
+#' test_NA(dat)
+#' correct_NA(dat,custom_NAs="naa")
+#'}
 #' @references 2 Ethan P. White, Elita Baldridge, Zachary T. Brym, Kenneth J. Locey, Daniel J. McGlinn, and 3 and Sarah R. Supp.  1 Nine simple ways to make it easier to (re)use your data.  PeerJ PrePrints. , doi: 10.7287/peerj.preprints.7v2
 fix_NA <- function(dat, custom_NAs = list(), removeFactors=TRUE) {
   if (!is(dat, "data.frame")) {
