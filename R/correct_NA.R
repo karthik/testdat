@@ -11,7 +11,7 @@ correct_NA <- function(dat, custom_NAs = list(), removeFactors=TRUE) {
   if (!is(dat, "data.frame")) {
     stop("Can only correct data.frames at this time")
   }
-  message(sprintf("Now checking %s columns...", ncol(dat)))
+  message(sprintf("Now correcting %s columns...", ncol(dat)))
   
   # List is incomplete
   NA_aliases = list(
