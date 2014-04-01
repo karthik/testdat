@@ -11,6 +11,10 @@ utf8df <- structure(
   .Names = c('x', 'y', 'dat'), row.names = c(NA, -1L), class = 'data.frame'
 )
 
+# This CSV file is UTF-8
+utf8csv <- read.csv(system.file("data", "km1314-waypoints.csv",
+                                package = "testdat"))
+
 
 test_that("test_utf8 errors on non-data frames", {
   expect_error(test_utf8(1:8))
@@ -21,10 +25,7 @@ test_that("test_utf8 errors on non-data frames", {
 test_that("test_utf8 correctly detects UTF-8", {
   expect_false(test_utf8(iris))
   expect_true(test_utf8(utf8df))
-
-  # This CSV file is UTF-8
-  data <- read.csv("data/km1314-waypoints.csv")
-  expect_true(test_utf8(data))
+  expect_true(test_utf8(utf8csv))
 
   # Testing latin1 encoded strings
   txt <- "fa\xE7ile"
