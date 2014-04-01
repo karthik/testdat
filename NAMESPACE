@@ -2,6 +2,7 @@
 
 export(browse_dat)
 export(detect_outliers)
+export(fix_date_continuity)
 export(is.count)
 export(remove_white_spaces)
 export(sanitize_text)
