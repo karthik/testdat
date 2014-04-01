@@ -37,6 +37,10 @@ correct_NA <- function(dat, custom_NAs = list(), removeFactors=TRUE) {
   # Should also do regexes to include other capitalizations
   matches = is.na(dat) | sapply(dat, function(x){x %in% NA_aliases})
   
+  if(sum(matches)==0){
+    stop("This data.frame has no identifiable NA aliases.")
+  }
+  
   dat[matches] <- NA
   
   # removing factors, coercing into characters or numeric
