@@ -36,7 +36,7 @@ test_that("test_utf8 correctly detects UTF-8", {
 })
 
 
-test_that("sanitize_text cleans weird chars", {
+test_that("sanitize_text cleans non-ASCII chars", {
   expect_identical(
     sanitize_text("This is some bad text \U3e32393cs that contains utf-8 characters"),
     "This is some bad text s that contains utf-8 characters"
@@ -51,7 +51,7 @@ test_that("sanitize_text cleans weird chars", {
 })
 
 
-test_that("sanitize_text only works on character vectors", {
+test_that("sanitize_text errors on non-character vectors", {
   expect_error(sanitize_text(iris))
   expect_error(sanitize_text(1:10))
 })
