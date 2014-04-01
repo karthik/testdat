@@ -10,9 +10,12 @@
 sanitize_text <- function(input_text) {
   assert_that(is.character(input_text))
   sanitize.each.element <- function(elem) {
-    ifelse(Encoding(elem)=="unknown", elem,
-      iconv(elem,from=as.character(Encoding(elem)),to="latin1",sub="")
-    )
+    if (Encoding(elem) == "unknown")
+      enc <- "ASCII"
+    else
+      enc <- Encoding(elem)
+
+    iconv(elem, from=enc, to="ASCII", sub="")
   }
   input_text <- sapply(input_text, sanitize.each.element)
   names(input_text) <- NULL
