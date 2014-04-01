@@ -17,7 +17,8 @@ Imports:
     whisker,
     lubridate,
     stringr,
-    outliers
+    outliers,
+    stringdist
 Suggests:
     testthat,
     xtable
