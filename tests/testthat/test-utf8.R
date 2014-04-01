@@ -41,6 +41,13 @@ test_that("sanitize_text cleans weird chars", {
     sanitize_text("This is some bad text \U3e32393cs that contains utf-8 characters"),
     "This is some bad text s that contains utf-8 characters"
   )
+
+  # Should work on vectors, even with mixed encodings.
+  # This vector has "UTF-8" and "unknown".
+  expect_identical(
+    sanitize_text(c("xx\U3e32393cxx", "yy\xE7yy", "zzzz")),
+    c("xxxx", "yyyy", "zzzz")
+  )
 })
 
 
