@@ -22,6 +22,7 @@ test_NA <- function(dat) {
     NULL,
     "na",
     "N/A",
+    "n/a",
     "NULL"
   )
   
