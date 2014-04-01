@@ -17,7 +17,7 @@
 #' correct_NA(dat,custom_NAs="naa")
 #'}
 #' @references 2 Ethan P. White, Elita Baldridge, Zachary T. Brym, Kenneth J. Locey, Daniel J. McGlinn, and 3 and Sarah R. Supp.  1 Nine simple ways to make it easier to (re)use your data.  PeerJ PrePrints. , doi: 10.7287/peerj.preprints.7v2
-fix_NA <- function(dat, custom_NAs = list(), removeFactors=TRUE) {
+fix_NA <- function(dat, custom_NAs = list(), leave_in = list(), removeFactors=TRUE) {
   if (!is(dat, "data.frame")) {
     stop("Can only fix data.frames at this time")
   }
@@ -37,9 +37,12 @@ fix_NA <- function(dat, custom_NAs = list(), removeFactors=TRUE) {
     "n/a",
     "NULL"
   )
+
+  # remove stuff that user says should *not* be considered NA
+  remove <- which(NA_aliases %in% leave_in)
+  NA_aliases <- NA_aliases[-remove]
   
   # append user-inputted custom_NAs
-  
   if(length(custom_NAs)>0){
     NA_aliases <- append(NA_aliases,custom_NAs)
   }
