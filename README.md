@@ -1,4 +1,6 @@
-# test dat!
+[![Build Status](https://travis-ci.org/ropensci/testdat.svg)](https://travis-ci.org/ropensci/testdat)
+
+# testdat!
 
 This package provides a test suite to ensure that tabular data are correctly formatted. It will ensure that columns do not have unicode characters, numeric columns don't have characters, and that columns of data can be tested to ensure that there are no outliers. This suite would be extremely useful alongside unit tests for code to ensure that data read into R do not have errors in them.
 
@@ -18,7 +20,7 @@ The `testdat` package has two types of functions -- those to test for errors in 
 
 The testing suite of functions should be used immediately after loading a data.frame into R. This has two goals -- first, it allows you as a user to immediately identify potential issues with the data. Second, it functions to communiate to readers of your analysis that you investigated errors in your data. One possible usecase, then, is to print the results of these tests in your analysis or documentation immediately after loading the data.
 
-```
+```coffee
 > data <- read.csv("local/2012.csv")
 > test_utf8(data)
 [1] FALSE
@@ -26,7 +28,7 @@ The testing suite of functions should be used immediately after loading a data.f
 
 The correcting suite of functions should be used in the case that the testing suite of functions elucidate issues with your data. Not every testing function has a correction function -- for example, a correction function for `detect_outliers.R` would have serious statistical implications. However, for functions such as `test_utf8.R`, we have included a `clean_utf8.R` function for a quick fix to a negative test.
 
-```
+```coffee
 > data <- read.csv("local/km1314-waypoints.csv", header=FALSE)
 > test_utf8(data)
 [1] TRUE
