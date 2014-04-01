@@ -12,4 +12,29 @@ install_github("ropensci/testdat")
 ```
 
 
+## Use Cases
+
+The `testdat` package has two types of functions -- those to test for errors in data.frames, and those to correct for these errors in data.frames.
+
+The testing suite of functions should be used immediately after loading a data.frame into R. This has two goals -- first, it allows you as a user to immediately identify potential issues with the data. Second, it functions to communiate to readers of your analysis that you investigated errors in your data. One possible usecase, then, is to print the results of these tests in your analysis or documentation immediately after loading the data.
+
+```
+> data <- read.csv("local/2012.csv")
+> test_utf8(data)
+[1] FALSE
+```
+
+The correcting suite of functions should be used in the case that the testing suite of functions elucidate issues with your data. Not every testing function has a correction function -- for example, a correction function for `detect_outliers.R` would have serious statistical implications. However, for functions such as `test_utf8.R`, we have included a `clean_utf8.R` function for a quick fix to a negative test.
+
+```
+> data <- read.csv("local/km1314-waypoints.csv", header=FALSE)
+> test_utf8(data)
+[1] TRUE
+> clean_data <- clean_utf8(data)
+> test_utf8(clean_data)
+[1] FALSE
+```
+(Note the above is just pseudocode until we get these functions working.)
+
+Using the `testdat` suite of functions allows you to create a convincing argument that you have properly dealt with data quality issues, in a way that is easily followed by readers of your analysis. Presenting these tests and corrections in documentation adds reproducibility to the way that you identified and corrected errors, or verifying that your data did not have errors.
 
