@@ -9,12 +9,7 @@
 #' expect_true(test_lat(dat$latitude))
 #'}
 test_lat <- function(x) {
-	value <- sapply(x, function(y) y < -90 | y > 90)
-	if(any(value))  {
-		FALSE
-	} else {
-		TRUE
-	}
+ all(x > -90 & x < 90)
 }
 
 
@@ -27,12 +22,7 @@ test_lat <- function(x) {
 #' expect_true(test_lat(dat$longitude))
 #'}
 test_long <- function(x) {
-	value <- sapply(x, function(y) y < -180 | y > 180)
-	if(any(value))  {
-		FALSE
-	} else {
-		TRUE
-	}
+ all(x > -180 & x < 180)
 }
 
 
