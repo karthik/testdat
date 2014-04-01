@@ -1,3 +1,6 @@
+#' Detect possible capitalization errors
+#' @param char a character vector
+#' @export
 detect_cap = function(char){
   uniques = unique(char)
   lower_uniques = tolower(uniques)
@@ -16,14 +19,20 @@ detect_cap = function(char){
   }
 }
 
-
-# I defaulted to Jaccard similarity because it's pre-scaled.  It's probably not
-# the best distance metric for this though!
+#' Detect uncomfortably similar string pairs
+#' @param char a character vector
+#' @param method a valid \code{method} for \code{stringdistmat}
+#' @param tol minimum allowable distance between values
+#' @param ... additional arguments to \code{stringdistmat}
+#' I defaulted to Jaccard similarity because it's pre-scaled.  It's probably not
+#' the best distance metric for this though!
+#' @importFrom stringdist stringdistmat
+#' @export
 detect_similar = function(char, method = "jaccard", tol = 0.1, ...){
   uniques = unique(char)
   distmat = stringdistmatrix(uniques, uniques, method = method, ...)
   
-  indices = which(distmat < tol & upper.tri(distmat))
+  indices = which(distmat <= tol & upper.tri(distmat))
   
   message("The following pairs of elements were uncomfortably similar")
   
