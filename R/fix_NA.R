@@ -1,17 +1,17 @@
-#' Correct for cryptic NAs
+#' Replace cryptic NAs with standard NA
 #'
-#' This function will correct every column in a data.frame for possible missing value codes. It should be used if the \code{test_NA()} function identifies cryptic NAs in your data.frame, or if you have a custom NA indicator that you want to correct.
+#' This function will fix every column in a data.frame for possible missing value codes. It should be used if the \code{test_NA()} function identifies cryptic NAs in your data.frame, or if you have a custom NA indicator that you want to fix.
 #' A list of missing value codes to check can be found in White et al. 2013.
 #' @param dat input dataset. Currently only supports \code{data.frame} but will soon support \code{data.table}
-#' @param custom_NAs addition NA aliases you want to correct. Be sure to create a list if you want to include NA aliases of different classes.
-#' @param removeFactors Should columns be converted from factors after correcting for NA aliases? (Conversion to factors happens by default in correction process.) Strongly recomment the TRUE default.
+#' @param custom_NAs addition NA aliases you want to fix. Be sure to create a list if you want to include NA aliases of different classes.
+#' @param removeFactors Should columns be converted from factors after fixing for NA aliases? (Conversion to factors happens by default in correction process.) Strongly recomment the TRUE default.
 #' @export
 #' @references 2 Ethan P. White, Elita Baldridge, Zachary T. Brym, Kenneth J. Locey, Daniel J. McGlinn, and 3 and Sarah R. Supp.  1 Nine simple ways to make it easier to (re)use your data.  PeerJ PrePrints. , doi: 10.7287/peerj.preprints.7v2
-correct_NA <- function(dat, custom_NAs = list(), removeFactors=TRUE) {
+fix_NA <- function(dat, custom_NAs = list(), removeFactors=TRUE) {
   if (!is(dat, "data.frame")) {
-    stop("Can only correct data.frames at this time")
+    stop("Can only fix data.frames at this time")
   }
-  message(sprintf("Now correcting %s columns...", ncol(dat)))
+  message(sprintf("Now fixing %s columns...", ncol(dat)))
   
   # List is incomplete
   NA_aliases = list(
