@@ -41,3 +41,21 @@ The correcting suite of functions should be used in the case that the testing su
 
 Using the `testdat` suite of functions allows you to create a convincing argument that you have properly dealt with data quality issues, in a way that is easily followed by readers of your analysis. Presenting these tests and corrections in documentation adds reproducibility to the way that you identified and corrected errors, or verifying that your data did not have errors.
 
+## Examples
+
+```coffee
+dat <- data.frame(
+  date = rep(as.Date("2014-01-01"),10),
+  num = c(1:8,999,"n/a"),
+  name = c("NULL","naa",rep("foo",8))
+)
+
+dat
+test_NA(dat)
+class(dat$num)
+class(dat$name)
+clean_dat <- fix_NA(dat, custom_NAs="naa")
+clean_dat
+class(clean_dat$num)
+class(clean_dat$name)
+```
