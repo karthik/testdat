@@ -49,6 +49,7 @@ correct_NA <- function(dat, factors=FALSE) {
       if(sum(is.na(as.numeric(as.character(dat[,check_col[i]]))))==NAs_col[i]){
         dat[,check_col[i]] <- as.numeric(as.character(dat[,check_col[i]]))
       }
+      # yes--coerce to character
       else{
         dat[,check_col[i]] <- as.character(dat[,check_col[i]])
       }
