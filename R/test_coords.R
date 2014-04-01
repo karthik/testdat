@@ -14,7 +14,6 @@ test_lat <- function(x) {
 
 
 #' Valid longitude
-#'
 #' Test for valid longitude. Between -180 and 180
 #' @param x A longitude
 #' @export
