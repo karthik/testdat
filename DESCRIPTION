@@ -16,7 +16,7 @@ LazyData: true
 Imports:
     assertthat,
     whisker,
-    lubridate,
+    lubridate (>= 1.3.3),
     stringr,
     outliers
 Suggests:
