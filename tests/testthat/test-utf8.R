@@ -12,7 +12,7 @@ utf8df <- structure(
 )
 
 # This CSV file is UTF-8
-utf8csv <- read.csv(system.file("data", "km1314-waypoints.csv",
+utf8csv <- read.csv(system.file("extdata", "km1314-waypoints.csv",
                                 package = "testdat"))
 
 
