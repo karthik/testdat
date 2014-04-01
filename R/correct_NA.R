@@ -1,11 +1,13 @@
 #' Correct for cryptic NAs
 #'
-#' This function will correct every column in a data.frame for possible missing value codes. It should be used if the \code{test_NA()} function identifies cryptic NAs in your data.frame.
+#' This function will correct every column in a data.frame for possible missing value codes. It should be used if the \code{test_NA()} function identifies cryptic NAs in your data.frame, or if you have a custom NA indicator that you want to correct.
 #' A list of missing value codes to check can be found in White et al. 2013.
 #' @param dat input dataset. Currently only supports \code{data.frame} but will soon support \code{data.table}
+#' @param custom_NAs addition NA aliases you want to correct. Be sure to create a list if you want to include NA aliases of different classes.
+#' @param removeFactors Should columns be converted from factors after correcting for NA aliases? (Conversion to factors happens by default in correction process.) Strongly recomment the TRUE default.
 #' @export
 #' @references 2 Ethan P. White, Elita Baldridge, Zachary T. Brym, Kenneth J. Locey, Daniel J. McGlinn, and 3 and Sarah R. Supp.  1 Nine simple ways to make it easier to (re)use your data.  PeerJ PrePrints. , doi: 10.7287/peerj.preprints.7v2
-correct_NA <- function(dat, factors=FALSE) {
+correct_NA <- function(dat, custom_NAs = list(), removeFactors=TRUE) {
   if (!is(dat, "data.frame")) {
     stop("Can only correct data.frames at this time")
   }
@@ -26,13 +28,19 @@ correct_NA <- function(dat, factors=FALSE) {
     "NULL"
   )
   
+  # append user-inputted custom_NAs
+  
+  if(length(custom_NAs)>0){
+    NA_aliases <- append(NA_aliases,custom_NAs)
+  }
+  
   # Should also do regexes to include other capitalizations
   matches = is.na(dat) | sapply(dat, function(x){x %in% NA_aliases})
   
   dat[matches] <- NA
   
   # removing factors, coercing into characters or numeric
-  if(factors==FALSE){
+  if(removeFactors==TRUE){
     
     # which columns to check
     check_col <- unique(col(dat)[matches])
