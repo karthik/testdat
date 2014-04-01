@@ -1,0 +1,23 @@
+\name{test_NA}
+\alias{test_NA}
+\title{Test for cryptic NAs}
+\usage{
+test_NA(dat)
+}
+\arguments{
+  \item{dat}{input dataset. Currently only supports
+  \code{data.frame} but will soon support
+  \code{data.table}}
+}
+\description{
+This test will check every column in a data.frame for
+possible missing value codes. A list of missing value codes
+to check can be found in White et al. 2013.
+}
+\references{
+2 Ethan P. White, Elita Baldridge, Zachary T. Brym, Kenneth
+J. Locey, Daniel J. McGlinn, and 3 and Sarah R. Supp.  1
+Nine simple ways to make it easier to (re)use your data.
+PeerJ PrePrints. , doi: 10.7287/peerj.preprints.7v2
+}
+

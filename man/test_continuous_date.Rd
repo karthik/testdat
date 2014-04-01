@@ -1,0 +1,33 @@
+\name{test_continuous_date}
+\alias{test_continuous_date}
+\title{Test for date continuity}
+\usage{
+test_continuous_date(dat, index, form = ymd, granularity = "days")
+}
+\arguments{
+  \item{dat}{data frame to test}
+
+  \item{index}{index of column containing dates}
+
+  \item{form}{a lubridate function giving the format the
+  dates should be in}
+
+  \item{granularity}{how often are measurements expected?
+  defaults to \code{'days'}.}
+}
+\value{
+returns at least some of the missing dates (measured in
+\code{granularity}) if there are any, otherwise returns
+TRUE
+}
+\description{
+Determine whether date column contains a continuous range
+of times
+}
+\details{
+by "some of" the missing dates, we mean the function
+returns the first [\code{granularity}] after the one
+present in the dataset. However, more than just the first
+unit might be missing.
+}
+
