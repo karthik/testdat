@@ -4,9 +4,9 @@ Description: A suite for running automated tests to detect common problems with
     tabular data
 Version: 0.2
 Authors@R: c(person("Karthik", "Ram", role = c("aut", "cre"), email =
-    "karthik.ram@gmail.com"), 
+    "karthik.ram@gmail.com"),
     person("Hilary", "Parker", role="aut"),
-    person("Alyssa", "Frazee", role="aut"), 
+    person("Alyssa", "Frazee", role="aut"),
     person("Scott", "Chamberlain", role="aut"))
 Depends:
     R (>= 3.0.1)
