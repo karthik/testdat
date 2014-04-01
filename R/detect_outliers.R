@@ -10,7 +10,7 @@
 #' data(iris)
 #' detect_outliers(iris)
 #'}
-detect_outliers <- function(dat, threshold = 1.96, ...){
+detect_outliers <- function(dat, threshold = 1.96, plot = FALSE, ...){
   
   # identify numeric columns
   ind <- which(sapply(dat, is.numeric))
@@ -37,6 +37,14 @@ detect_outliers <- function(dat, threshold = 1.96, ...){
   }
   
   message("Below are indexes of outliers to investigate")
+  
+  if(plot){
+    pairs(
+      dat[ , ind], 
+      col = ifelse(1:nrow(dat) %in% unlist(res), "red", "black"),
+      pch = ifelse(1:nrow(dat) %in% unlist(res), 16, 1)
+    )
+  }
   
   # return results list
   return(res)
