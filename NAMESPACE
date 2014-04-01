@@ -2,8 +2,11 @@
 
 export(browse_dat)
 export(detect_outliers)
+export(is.count)
 export(remove_white_spaces)
 export(sanitize_text)
+export(test_NA)
+export(test_continuous_date)
 export(test_datecol)
 export(test_utf8)
 import(lubridate)

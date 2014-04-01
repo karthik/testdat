@@ -3,7 +3,7 @@
 \alias{detect_outliers}
 \title{Test for outliers}
 \usage{
-detect_outliers(dat, threshold = 1.96, ...)
+detect_outliers(dat, threshold = 1.96, plot = FALSE, ...)
 }
 \arguments{
 \item{dat}{input dataset. Currently only supports \code{data.frame} but will soon support \code{data.table}}
