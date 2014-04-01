@@ -32,7 +32,7 @@ correct_NA <- function(dat, factors=FALSE) {
   dat[matches] <- NA
   
   # removing factors, coercing into characters or numeric
-  if(factors=FALSE){
+  if(factors==FALSE){
     
     # which columns to check
     check_col <- unique(col(dat)[matches])
@@ -46,7 +46,7 @@ correct_NA <- function(dat, factors=FALSE) {
       # if so, coerce to character
       
       # no--coerce to numeric
-      if(sum(is.na(as.numeric(as.character(dat[,check_col[i]]))))==NAs_col[i]){
+      if(sum(is.na(suppressWarnings(as.numeric(as.character(dat[,check_col[i]])))))==NAs_col[i]){
         dat[,check_col[i]] <- as.numeric(as.character(dat[,check_col[i]]))
       }
       # yes--coerce to character
@@ -54,7 +54,6 @@ correct_NA <- function(dat, factors=FALSE) {
         dat[,check_col[i]] <- as.character(dat[,check_col[i]])
       }
     }
-    
   }
   return(dat)
 } 
