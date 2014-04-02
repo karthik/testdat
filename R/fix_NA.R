@@ -3,7 +3,8 @@
 #' This function will fix every column in a data.frame for possible missing value codes. It should be used if the \code{test_NA()} function identifies cryptic NAs in your data.frame, or if you have a custom NA indicator that you want to fix.
 #' A list of missing value codes to check can be found in White et al. 2013.
 #' @param dat input dataset. Currently only supports \code{data.frame} but will soon support \code{data.table}
-#' @param custom_NAs addition NA aliases you want to fix. Be sure to create a list if you want to include NA aliases of different classes.
+#' @param custom_NAs additional NA aliases you want to fix. Be sure to create a list if you want to include NA aliases of different classes.
+#' @param leave_in NA aliases that were identified by \code{test_NA} but should NOT be treated as such when cleaning the dataset. If more than one, the arguments should be a list. 
 #' @param removeFactors Should columns be converted from factors after fixing for NA aliases? (Conversion to factors happens by default in correction process.) Strongly recomment the TRUE default.
 #' @export
 #' @examples \dontrun{
@@ -17,7 +18,7 @@
 #' correct_NA(dat,custom_NAs="naa")
 #'}
 #' @references 2 Ethan P. White, Elita Baldridge, Zachary T. Brym, Kenneth J. Locey, Daniel J. McGlinn, and 3 and Sarah R. Supp.  1 Nine simple ways to make it easier to (re)use your data.  PeerJ PrePrints. , doi: 10.7287/peerj.preprints.7v2
-fix_NA <- function(dat, custom_NAs = list(), removeFactors=TRUE) {
+fix_NA <- function(dat, custom_NAs = list(), leave_in = list(), removeFactors=TRUE) {
   if (!is(dat, "data.frame")) {
     stop("Can only fix data.frames at this time")
   }
@@ -37,9 +38,12 @@ fix_NA <- function(dat, custom_NAs = list(), removeFactors=TRUE) {
     "n/a",
     "NULL"
   )
+
+  # remove stuff that user says should *not* be considered NA
+  remove <- which(NA_aliases %in% leave_in)
+  NA_aliases <- NA_aliases[-remove]
   
   # append user-inputted custom_NAs
-  
   if(length(custom_NAs)>0){
     NA_aliases <- append(NA_aliases,custom_NAs)
   }

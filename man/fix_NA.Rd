@@ -3,12 +3,14 @@
 \alias{fix_NA}
 \title{Replace cryptic NAs with standard NA}
 \usage{
-fix_NA(dat, custom_NAs = list(), removeFactors = TRUE)
+fix_NA(dat, custom_NAs = list(), leave_in = list(), removeFactors = TRUE)
 }
 \arguments{
 \item{dat}{input dataset. Currently only supports \code{data.frame} but will soon support \code{data.table}}
 
-\item{custom_NAs}{addition NA aliases you want to fix. Be sure to create a list if you want to include NA aliases of different classes.}
+\item{custom_NAs}{additional NA aliases you want to fix. Be sure to create a list if you want to include NA aliases of different classes.}
+
+\item{leave_in}{NA aliases that were identified by \code{test_NA} but should NOT be treated as such when cleaning the dataset. If more than one, the arguments should be a list.}
 
 \item{removeFactors}{Should columns be converted from factors after fixing for NA aliases? (Conversion to factors happens by default in correction process.) Strongly recomment the TRUE default.}
 }

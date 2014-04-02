@@ -43,6 +43,16 @@ Using the `testdat` suite of functions allows you to create a convincing argumen
 
 ## Examples
 
+### Testing for outliers
+
+### Testing/Fixing for continuous dates
+
+### Testing/Fixing whitespaces
+
+### Testing/Fixing utf8 characters
+
+### Testing/Fixing NAs
+
 ```coffee
 dat <- data.frame(
   date = rep(as.Date("2014-01-01"),10),
