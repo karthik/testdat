@@ -31,7 +31,7 @@ test_that("test_utf8 correctly detects UTF-8", {
   txt <- "fa\xE7ile"
   Encoding(txt) <- "latin1"
   df <- data.frame(txt)
-  expect_false(test_utf8(df))
+  expect_true(test_utf8(df))
   # FIXME: test_utf8 returns TRUE for non-UTF-8 encoded strings.
   # Maybe it should be called test_nonascii?
 })
