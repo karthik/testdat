@@ -8,6 +8,7 @@ Authors@R: c(person("Karthik", "Ram", role = c("aut", "cre"), email =
     person("Hilary", "Parker", role="aut"),
     person("Alyssa", "Frazee", role="aut"),
     person("David", "Harris", role="aut"),
+    person("Winston", "Chang", role="aut"),
     person("Scott", "Chamberlain", role="aut"))
 Depends:
     R (>= 3.0.1)
