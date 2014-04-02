@@ -35,4 +35,7 @@ test_NA <- function(dat) {
     value = dat[matches],
     stringsAsFactors = FALSE
   )
+  
+  # todo -- throw warning if 999, etc. are identifed as NA characters: "Verify that 999 is an NA and not a data point"
+  
 } 
