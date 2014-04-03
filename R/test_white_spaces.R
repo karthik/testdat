@@ -13,6 +13,6 @@ test_white_spaces <- function (text)
     if (text1 != text) wsDetected <- TRUE
     text2 <- sub(" +$", "", text)
     if (text2 != text) wsDetected <- TRUE
-    if (wsDetected) print("Whitespaces detected.")
-    else print("No whitespaces detected.")
+    if (wsDetected) return TRUE
+    else return FALSE
 }
