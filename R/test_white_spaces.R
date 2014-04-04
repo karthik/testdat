@@ -12,15 +12,11 @@ test_white_spaces <- function (text)
     wsDetected <- FALSE
     text1 <- sub("^ +", "", text)
     if (text1 != text) {
-      message("Whitespace(s) detected.")
       wsDetected <- TRUE
     }
     text2 <- sub(" +$", "", text)
     if (text2 != text) {
-      message("Whitespace(s) detected.")
       wsDetected <- TRUE
-    } else {
-      message("Whitespace(s) not detected.")
-    }
+    } 
     wsDetected
 }
