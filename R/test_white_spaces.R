@@ -7,12 +7,20 @@
 #' test_white_spaces(" Karthik Ram")
 #' test_white_spaces(" Karthik Ram ")
 #'}
-test_white_spaces <- function (text)  
-{   wsDetected <- FALSE
+test_white_spaces <- function (text) 
+{     
+    wsDetected <- FALSE
     text1 <- sub("^ +", "", text)
-    if (text1 != text) wsDetected <- TRUE
+    if (text1 != text) {
+      message("Whitespace(s) detected.")
+      wsDetected <- TRUE
+    }
     text2 <- sub(" +$", "", text)
-    if (text2 != text) wsDetected <- TRUE
-    if (wsDetected) return TRUE
-    else return FALSE
+    if (text2 != text) {
+      message("Whitespace(s) detected.")
+      wsDetected <- TRUE
+    } else {
+      message("Whitespace(s) not detected.")
+    }
+    wsDetected
 }
