@@ -29,13 +29,15 @@ test_NA <- function(dat) {
   # Should also do regexes to include other capitalizations
   matches = is.na(dat) | sapply(dat, function(x){x %in% NA_aliases})
   
-  data.frame(
+  # throw a warning if 999 is identified as an NA alias
+  if(sum(dat[matches] %in% list("-999", "999", -999, 999))){
+    message("999 was identified as a possible NA alias -- please verify this is not a data value!")
+  }
+  
+  return(data.frame(
     row = row(dat)[matches], 
     column = col(dat)[matches], 
     value = dat[matches],
     stringsAsFactors = FALSE
-  )
-  
-  # todo -- throw warning if 999, etc. are identifed as NA characters: "Verify that 999 is an NA and not a data point"
-  
+  ))
 } 
