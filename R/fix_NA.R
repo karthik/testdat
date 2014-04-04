@@ -39,10 +39,11 @@ fix_NA <- function(dat, custom_NAs = list(), leave_in = list(), removeFactors=TR
     "NULL"
   )
 
-  # TODO: fix this, somehow it broke the function...
   # remove stuff that user says should *not* be considered NA
-  # remove <- which(NA_aliases %in% leave_in)
-  # NA_aliases <- NA_aliases[-remove]
+  if(length(leave_in) > 0){
+    remove <- which(NA_aliases %in% leave_in)
+    NA_aliases <- NA_aliases[-remove]
+  }
   
   # append user-inputted custom_NAs
   if(length(custom_NAs)>0){
