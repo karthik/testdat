@@ -17,7 +17,7 @@ test_utf8 <- function(dat, verbose = F) {
     }
     if(verbose) message(sprintf("Now checking %s columns...", ncol(dat)))
     # Testing for UTF-8 in any columns
-    ut8 <- suppressWarnings(apply(dat, 2, non_ascii))
+    ut8 <- simplify2array(lapply(colnames(dat),non_ascii))
     if(any(ut8) == TRUE) {
         if(verbose) {
         message("UTF-8 characters detected in columns ")
