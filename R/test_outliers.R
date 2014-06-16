@@ -3,6 +3,7 @@
 #' This function identifies numeric columns in a data.frame, then identifies outliers and returns the indexes of these possible outliers for each numeric column.
 #' @param dat input dataset. Currently only supports \code{data.frame} but will soon support \code{data.table}
 #' @param threshold for outlier detection method (defaults to z-score)
+#' @param plot logical. Set \code{TRUE} to plot
 #' @param ... Further args (to be passed to scores() function)
 #' @export
 #' @importFrom outliers scores
