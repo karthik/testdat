@@ -69,3 +69,5 @@ clean_dat
 class(clean_dat$num)
 class(clean_dat$name)
 ```
+
+[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
