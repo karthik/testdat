@@ -5,7 +5,7 @@
 #' @param dat input dataset. Currently only supports \code{data.frame} but will soon support \code{data.table}
 #' @export
 #' @references 2 Ethan P. White, Elita Baldridge, Zachary T. Brym, Kenneth J. Locey, Daniel J. McGlinn, and 3 and Sarah R. Supp.  1 Nine simple ways to make it easier to (re)use your data.  PeerJ PrePrints. , doi: 10.7287/peerj.preprints.7v2
-test_NA <- function(dat) {
+test_for_NA <- function(dat) {
   if (!is(dat, "data.frame")) {
     stop("Can only test data.frames at this time")
   }
@@ -41,3 +41,19 @@ test_NA <- function(dat) {
     stringsAsFactors = FALSE
   ))
 } 
+
+#noRd
+#' @export
+test_NA <- function(...) {
+  z <- test_for_NA(...)
+  return(ifelse(nrow(z) ==0, TRUE, FALSE))
+}
+
+
+#noRd
+#' @export
+find_NA <- function(...) {
+  z <- test_for_NA(...)
+  return(z)
+}
+ 
